@@ -3,6 +3,6 @@
 
 FindMyPet é uma rede social para animais perdidos.
 
-# License
+License
 ----
 MIT
