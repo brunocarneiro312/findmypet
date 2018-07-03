@@ -4,9 +4,15 @@ import lab.rest1.domain.enums.PetBehaviour;
 import lab.rest1.domain.enums.PetCategory;
 import lab.rest1.domain.enums.PetClass;
 import lab.rest1.domain.enums.PetSize;
+import lombok.*;
 
 import javax.persistence.*;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(of = "id")
+@ToString
 @Entity
 @Table(name = "TB_PET")
 public class Pet {
@@ -40,62 +46,4 @@ public class Pet {
     @JoinColumn(name = "ID_OWNER")
     private Owner owner;
 
-    public Pet() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public PetClass getPetClass() {
-        return petClass;
-    }
-
-    public void setPetClass(PetClass petClass) {
-        this.petClass = petClass;
-    }
-
-    public PetCategory getPetCategory() {
-        return petCategory;
-    }
-
-    public void setPetCategory(PetCategory petCategory) {
-        this.petCategory = petCategory;
-    }
-
-    public PetSize getPetSize() {
-        return petSize;
-    }
-
-    public void setPetSize(PetSize petSize) {
-        this.petSize = petSize;
-    }
-
-    public PetBehaviour getPetBehaviour() {
-        return petBehaviour;
-    }
-
-    public void setPetBehaviour(PetBehaviour petBehaviour) {
-        this.petBehaviour = petBehaviour;
-    }
-
-    public Owner getOwner() {
-        return owner;
-    }
-
-    public void setOwner(Owner owner) {
-        this.owner = owner;
-    }
 }

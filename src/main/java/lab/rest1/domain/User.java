@@ -1,7 +1,16 @@
 package lab.rest1.domain;
 
+import lab.rest1.api.v1.model.LoginDTO;
+import lab.rest1.api.v1.model.UserDTO;
+import lombok.*;
+
 import javax.persistence.*;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(of = "userId")
+@ToString
 @Entity
 @Table(name = "TB_USER")
 public class User {
@@ -30,38 +39,20 @@ public class User {
     )
     private Login login;
 
-    public User() {
+    public UserDTO convert() {
+
+        LoginDTO loginDTO = new LoginDTO();
+        loginDTO.setId(login.getLoginId());
+        loginDTO.setUsername(login.getUsername());
+        loginDTO.setPassword(login.getPassword());
+
+        UserDTO userDTO = new UserDTO();
+        userDTO.setId(userId);
+        userDTO.setNome(nome);
+        userDTO.setEmail(email);
+        userDTO.setLoginDTO(loginDTO);
+
+        return userDTO;
     }
 
-    public Long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public Login getLogin() {
-        return login;
-    }
-
-    public void setLogin(Login login) {
-        this.login = login;
-    }
 }

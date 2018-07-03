@@ -1,23 +1,20 @@
 package lab.rest1.service.impl;
 
-import lab.rest1.api.v1.mapper.UserMapper;
-import lab.rest1.api.v1.model.*;
-import lab.rest1.domain.*;
+import lab.rest1.domain.Location;
+import lab.rest1.domain.Owner;
+import lab.rest1.domain.Pet;
+import lab.rest1.domain.User;
 import lab.rest1.repository.UserRepository;
 import lab.rest1.service.UserService;
 import org.apache.tomcat.util.digester.ArrayStack;
-import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
-
-    private UserMapper userMapper = Mappers.getMapper(UserMapper.class);
 
     private UserRepository userRespository;
 
@@ -73,29 +70,4 @@ public class UserServiceImpl implements UserService {
         // TODO
     }
 
-    /**
-     * ============================
-     * MÉTODOS DE UTILIDADE INTERNA
-     * ============================
-     */
-
-    /**
-     * converte User -> UserDTO
-     */
-    private UserDTO convert(User user) {
-        UserDTO userDTO = userMapper.userToUserDTO(user);
-        LoginDTO loginDTO = userMapper.loginToLoginDTO(user.getLogin());
-        userDTO.setLoginDTO(loginDTO);
-        return userDTO;
-    }
-
-    /**
-     * converte UserDTO -> User
-     */
-    private User convert(UserDTO userDTO) {
-        User user = userMapper.userDTOToUser(userDTO);
-        Login login = userMapper.loginDTOToLogin(userDTO.getLoginDTO());
-        user.setLogin(login);
-        return userMapper.userDTOToUser(userDTO);
-    }
 }

@@ -1,10 +1,8 @@
 package lab.rest1.api.v1.resource;
 
-import lab.rest1.api.v1.mapper.UserMapper;
 import lab.rest1.api.v1.model.UserDTO;
 import lab.rest1.domain.User;
 import lab.rest1.service.UserService;
-import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,8 +20,6 @@ public class UserResource {
 
     public static final String API_V1_USERS = "/api/v1/users";
 
-    private UserMapper userMapper = Mappers.getMapper(UserMapper.class);
-
     private UserService userService;
 
     @Autowired
@@ -34,7 +30,7 @@ public class UserResource {
     @GetMapping("/{id}")
     public ResponseEntity<UserDTO> getUser(@PathVariable("id") Long id) {
         User user = userService.findById(id);
-        return new ResponseEntity<UserDTO>(userMapper.userToUserDTO(user), HttpStatus.OK);
+        return new ResponseEntity<UserDTO>(user.convert(), HttpStatus.OK);
     }
 
     @GetMapping("/")

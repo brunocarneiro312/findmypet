@@ -1,8 +1,15 @@
 package lab.rest1.domain;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.List;
 
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(of = "id")
+@ToString
 @Entity
 @Table(name = "TB_OWNER")
 public class Owner {
@@ -20,30 +27,4 @@ public class Owner {
     @OneToMany(mappedBy = "owner")
     private List<Pet> petList;
 
-    public Owner() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public List<Pet> getPetList() {
-        return petList;
-    }
-
-    public void setPetList(List<Pet> petList) {
-        this.petList = petList;
-    }
 }
