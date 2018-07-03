@@ -12,6 +12,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ===============
+ * API de usuários
+ * ===============
+ * @author bruno.carneiro
+ */
 @Api(value = "/api/v1/users", description = "API de usuários")
 @RestController
 @RequestMapping(UserResource.API_V1_USERS)
